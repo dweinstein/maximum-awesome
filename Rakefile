@@ -148,6 +148,7 @@ namespace :install do
   desc 'Install The Silver Searcher'
   task :the_silver_searcher do
     step 'the_silver_searcher'
+    apt_install 'automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev'
     install_silver_searcher
   end
 
