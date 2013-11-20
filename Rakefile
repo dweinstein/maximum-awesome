@@ -226,15 +226,9 @@ LINKED_FILES = filemap(
 )
 
 desc 'Install these config files.'
-<<<<<<< HEAD
-task :install do
-  Rake::Task['install:brew'].invoke
-  Rake::Task['install:brew_cask'].invoke
-=======
 task :default do
   #Rake::Task['install:brew'].invoke
   #Rake::Task['install:brew_cask'].invoke
->>>>>>> some changes to support my Ubuntu instance.
   Rake::Task['install:the_silver_searcher'].invoke
   #Rake::Task['install:iterm'].invoke
   Rake::Task['install:ctags'].invoke
@@ -246,9 +240,19 @@ task :default do
   # TODO run gem ctags?
 
   step 'symlink'
+<<<<<<< HEAD
 
   LINKED_FILES.each do |orig, link|
     link_file orig, link
+=======
+  link_file 'vim'                   , '~/.vim'
+  link_file 'tmux.conf'             , '~/.tmux.conf'
+  link_file 'vimrc'                 , '~/.vimrc'
+  link_file 'vimrc.bundles'         , '~/.vimrc.bundles'
+  link_file 'gitconfig'             , '~/.gitconfig'
+  unless File.exist?(File.expand_path('~/.vimrc.local'))
+    cp File.expand_path('vimrc.local'), File.expand_path('~/.vimrc.local'), :verbose => true
+>>>>>>> link my gitconfig during rake
   end
 
   COPIED_FILES.each do |orig, copy|
