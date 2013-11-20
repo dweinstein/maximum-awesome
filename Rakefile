@@ -250,6 +250,7 @@ task :default do
   link_file 'vimrc'                 , '~/.vimrc'
   link_file 'vimrc.bundles'         , '~/.vimrc.bundles'
   link_file 'gitconfig'             , '~/.gitconfig'
+  link_file 'exports'               , '~/.exports'
   unless File.exist?(File.expand_path('~/.vimrc.local'))
     cp File.expand_path('vimrc.local'), File.expand_path('~/.vimrc.local'), :verbose => true
 >>>>>>> link my gitconfig during rake
