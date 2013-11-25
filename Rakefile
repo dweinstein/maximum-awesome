@@ -26,6 +26,10 @@ def apt_install(package, *options)
   sh "sudo apt-get #{options.join ' '} install #{package}"
 end
 
+def pacman_install(package, *options)
+  sh "sudo pacman -S #{options.join ' '} #{package}"
+end
+
 def install_github_bundle(user, package)
   unless File.exist? File.expand_path("~/.vim/bundle/#{package}")
     sh "git clone https://github.com/#{user}/#{package} ~/.vim/bundle/#{package}"
@@ -148,14 +152,14 @@ namespace :install do
   desc 'Install The Silver Searcher'
   task :the_silver_searcher do
     step 'the_silver_searcher'
-    apt_install 'automake pkg-config libpcre3-dev zlib1g-dev liblzma-dev'
+    pacman_install 'automake pkg-config pcre zlib xz'
     install_silver_searcher
   end
 
   desc 'Install ctags'
   task :ctags do
     step 'ctags'
-    apt_install 'ctags'
+    pacman_install 'ctags'
   end
 
   desc 'Install reattach-to-user-namespace'
@@ -167,7 +171,7 @@ namespace :install do
   desc 'Install tmux'
   task :tmux do
     step 'tmux'
-    apt_install 'tmux'
+    pacman_install 'tmux'
   end
 
   desc 'Install MacVim'
