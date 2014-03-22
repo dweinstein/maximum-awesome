@@ -24,7 +24,7 @@
 
 [apply]
 	# Detect whitespace errors when applying a patch
-	whitespace = fix
+	whitespace = warn
 
 [core]
 	# Use custom `.gitignore` and `.gitattributes`
@@ -76,3 +76,8 @@
 	email = dweinst@insitusec.com
 [push]
 	default = current
+[pull]
+	# pull only current branch unless specified
+	default = current
+	# only rebase divergent remotes on pull
+	rebase = true 
