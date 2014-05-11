@@ -128,3 +128,7 @@ function server() {
 
 # case insensitive grep
 alias grepi="grep -i"
+
+# node-vim-debug
+alias node-vim-debug='vim -nb'
+alias node-mvim-debug='mvim -nb'
