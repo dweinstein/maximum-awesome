@@ -226,7 +226,9 @@ LINKED_FILES = filemap(
   'vim'           => '~/.vim',
   'tmux.conf'     => '~/.tmux.conf',
   'vimrc'         => '~/.vimrc',
-  'vimrc.bundles' => '~/.vimrc.bundles'
+  'vimrc.bundles' => '~/.vimrc.bundles',
+  'gitconfig'     => '~/.gitconfig',
+  'exports'       => '~/.exports'
 )
 
 desc 'Install these config files.'
@@ -244,20 +246,9 @@ task :default do
   # TODO run gem ctags?
 
   step 'symlink'
-<<<<<<< HEAD
 
   LINKED_FILES.each do |orig, link|
     link_file orig, link
-=======
-  link_file 'vim'                   , '~/.vim'
-  link_file 'tmux.conf'             , '~/.tmux.conf'
-  link_file 'vimrc'                 , '~/.vimrc'
-  link_file 'vimrc.bundles'         , '~/.vimrc.bundles'
-  link_file 'gitconfig'             , '~/.gitconfig'
-  link_file 'exports'               , '~/.exports'
-  unless File.exist?(File.expand_path('~/.vimrc.local'))
-    cp File.expand_path('vimrc.local'), File.expand_path('~/.vimrc.local'), :verbose => true
->>>>>>> link my gitconfig during rake
   end
 
   COPIED_FILES.each do |orig, copy|
