@@ -1,11 +1,15 @@
-set nocursorline " don't highlight current line
+"set nocursorline " don't highlight current line
+set cursorline
+
+" hide cursorline on input
+autocmd InsertEnter,InsertLeave * set cul!
 
 " keyboard shortcuts
 inoremap jj <ESC>
 
 " highlight search
-"set hlsearch
-"nmap <leader>hl :let @/ = ""<CR>
+set hlsearch
+nmap <leader>hl :let @/ = ""<CR>
 
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
