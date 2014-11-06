@@ -220,7 +220,8 @@ LINKED_FILES = filemap(
   'tmux.conf'     => '~/.tmux.conf',
   'vimrc'         => '~/.vimrc',
   'vimrc.bundles' => '~/.vimrc.bundles',
-  'rc.py'         => '~/.percol.d/rc.py'
+  'rc.py'         => '~/.percol.d/rc.py',
+  'ssh.rc'        => '~/.ssh.rc'
 )
 
 desc 'Install these config files.'
