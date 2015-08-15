@@ -1,5 +1,4 @@
-"set nocursorline " don't highlight current line
-set cursorline
+set cursorline " do highlight current line
 
 " hide cursorline on input
 autocmd InsertEnter,InsertLeave * set cul!
@@ -10,6 +9,9 @@ inoremap jj <ESC>
 " highlight search
 set hlsearch
 nmap <leader>hl :let @/ = ""<CR>
+
+set background=dark
+colorscheme solarized
 
 " gui settings
 if (&t_Co == 256 || has('gui_running'))
@@ -35,3 +37,25 @@ function! s:RemoveConflictingAlignMaps()
 endfunction
 command! -nargs=0 RemoveConflictingAlignMaps call s:RemoveConflictingAlignMaps()
 silent! autocmd VimEnter * RemoveConflictingAlignMaps
+
+" cscope options
+if has("cscope")
+  set csprg=/usr/local/bin/cscope
+  set csto=0
+  set cst
+  set nocsverb
+  " add any database in current directory
+  if filereadable("cscope.out")
+    cs add cscope.out
+  " else add database pointed to by environment
+  elseif $CSCOPE_DB != ""
+    cs add $CSCOPE_DB
+  endif
+  set csverb
+
+  map g<C-]> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+  map g<C-\> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
+endif
+
+set tags=./.tags,.tags,./tags,tags
+
