@@ -1,6 +1,5 @@
 Bundle 'bling/vim-airline'
 Bundle 'moll/vim-node'
-Bundle 'tomtom/tlib_vim'
 Bundle 'jamescarr/snipmate-nodejs'
 Bundle 'jpalardy/vim-slime'
 Bundle 'vim-scripts/plist.vim'
