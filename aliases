@@ -111,7 +111,8 @@ alias ios="open -a /Applications/Xcode.app/Contents/Applications/iPhone\ Simulat
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
+	#alias "$method"="lwp-request -m '$method'"
+	alias "$method"="curl -X'$method'"
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
