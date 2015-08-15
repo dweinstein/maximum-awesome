@@ -134,3 +134,4 @@ alias strings='rabin2 -zz'
 
 alias dockerip='boot2docker ip'
 
+alias s3cmd='s3cmd --ssl'
