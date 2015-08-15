@@ -17,7 +17,7 @@ alias m="mate ."
 alias s="subl ."
 alias o="open"
 alias oo="open ."
-alias gist="gist -p"
+alias gist="gist -p -c"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -111,22 +111,16 @@ alias ios="open -a /Applications/Xcode.app/Contents/Applications/iPhone\ Simulat
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "$method"="lwp-request -m '$method'"
+	#alias "$method"="lwp-request -m '$method'"
+	alias "$method"="curl -X'$method'"
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume 7'"
-alias hax="growlnotify -a 'Activity Monitor' 'System error' -m 'WTF R U DOIN'"
 
 # disassembly using radare
 alias armdisbe='rasm2 -e -a arm -D'
-
-# Start an HTTP server from a directory, optionally specifying the port
-function server() {
-        local port="${1:-8000}"
-            open "http://localhost:${port}/" && python -m SimpleHTTPServer "$port"
-}
 
 # case insensitive grep
 alias grepi="grep -i"
@@ -135,7 +129,9 @@ alias grepi="grep -i"
 alias node-vim-debug='vim -nb'
 alias node-mvim-debug='mvim -nb'
 
-# docker debugging
-function ddocker() {
-  docker run -t -i --entrypoint="/bin/bash" $1 -c /bin/bash
-}
+# safe strings
+alias strings='rabin2 -zz'
+
+alias dockerip='boot2docker ip'
+
+alias s3cmd='s3cmd --ssl'

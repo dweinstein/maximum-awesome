@@ -119,7 +119,7 @@ namespace :install do
   desc 'Update or Install Brew'
   task :brew do
     step 'Homebrew'
-    unless system('which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"')
+    unless system('which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"')
       raise "Homebrew must be installed before continuing."
     end
   end
@@ -127,8 +127,9 @@ namespace :install do
   desc 'Install Homebrew Cask'
   task :brew_cask do
     step 'Homebrew Cask'
-    unless system('brew tap | grep phinze/cask > /dev/null') || system('brew tap phinze/homebrew-cask')
-      abort "Failed to tap phinze/homebrew-cask in Homebrew."
+    system('brew untap phinze/cask') if system('brew tap | grep phinze/cask > /dev/null')
+    unless system('brew tap | grep caskroom/cask > /dev/null') || system('brew tap caskroom/homebrew-cask')
+      abort "Failed to tap caskroom/homebrew-cask in Homebrew."
     end
 
     brew_install 'brew-cask'
@@ -199,7 +200,7 @@ exec /Applications/MacVim.app/Contents/MacOS/Vim "$@"
   task :vundle do
     step 'vundle'
     install_github_bundle 'gmarik','vundle'
-    sh '~/bin/vim -c "BundleInstall" -c "q" -c "q"'
+    sh '~/bin/vim -c "PluginInstall!" -c "q" -c "q"'
   end
 end
 
@@ -212,7 +213,8 @@ end
 
 COPIED_FILES = filemap(
   'vimrc.local'         => '~/.vimrc.local',
-  'vimrc.bundles.local' => '~/.vimrc.bundles.local'
+  'vimrc.bundles.local' => '~/.vimrc.bundles.local',
+  'tmux.conf.local'     => '~/.tmux.conf.local'
 )
 
 LINKED_FILES = filemap(
