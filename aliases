@@ -129,3 +129,6 @@ alias grepi="grep -i"
 alias node-vim-debug='vim -nb'
 alias node-mvim-debug='mvim -nb'
 
+# safe strings
+alias strings='rabin2 -zz'
+
