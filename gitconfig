@@ -83,3 +83,7 @@
 	default = current
 	# only rebase divergent remotes on pull
 	rebase = true 
+[github]
+	user = dweinstein
+[ghi]
+	token = !security find-internet-password -a  -s github.com -l 'ghi token' -w
