@@ -129,7 +129,3 @@ alias grepi="grep -i"
 alias node-vim-debug='vim -nb'
 alias node-mvim-debug='mvim -nb'
 
-# docker debugging
-function ddocker() {
-  docker run -t -i --entrypoint="/bin/bash" $1 -c /bin/bash
-}
