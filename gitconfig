@@ -75,6 +75,7 @@
 [user]
 	name = David Weinstein
 	email = dweinst@insitusec.com
+	signingkey = 06374760
 [push]
 	default = current
 [pull]
