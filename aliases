@@ -132,3 +132,5 @@ alias node-mvim-debug='mvim -nb'
 # safe strings
 alias strings='rabin2 -zz'
 
+alias dockerip='boot2docker ip'
+
